@@ -1,0 +1,23 @@
+@font-face {
+    font-weight: 500; /* Соответствует значению normal */
+    font-family: Cinzel;
+    src: url("./fonts/Cinzel-Medium.ttf");
+  }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.word {
+    letter-spacing: 15px;
+    font-family: Cinzel;
+    font-weight: 500;
+    font-size: 50px;
+}
