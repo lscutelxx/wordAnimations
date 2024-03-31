@@ -12,7 +12,7 @@ function showSmoothly(elem) {
         }
     ];
     
-    const options = 3000;
+    const options = 2000;
     
     elem.animate(keyframes, options)
 }
