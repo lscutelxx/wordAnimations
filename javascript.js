@@ -1,6 +1,6 @@
 let word = document.querySelector('.word')
 
-function showSmoothly(elem) {
+/* function showSmoothly(elem) {
     const keyframes = [
         { 
             opacity: 0,
@@ -17,12 +17,11 @@ function showSmoothly(elem) {
     elem.animate(keyframes, options)
 }
 
-/* showSmoothly(word) */
+showSmoothly(word) */
 
-
+///////////////Разбиваем слово на буквы
 let container = document.querySelector('.wrap');
 let arrayLetters = word.innerText.split('');
-console.log(arrayLetters)
 
 container.innerHTML = '';
 
@@ -37,32 +36,33 @@ function insertLetter() {
 insertLetter()
 
 let arrayLettersHtml = document.querySelectorAll('.letter');
-console.log(arrayLettersHtml)
 
+//////////////Анимация
 let timing = 0;
-/* arrayLettersHtml.forEach((letterTag) => {
+arrayLettersHtml.forEach(letterTag => letterTag.style.opacity = 0);
+
+arrayLettersHtml.forEach((letterTag) => {
     console.log(letterTag);
-    const keyframes = new KeyframeEffect(
-        letterTag,
-        [
-            { 
-                opacity: 0,
-                transform: "translateY(-50px)"
-            },
-            { 
-                opacity: 1,
-                transform: "translateY(0px)"
-            }
-        ],
-        {
-            duration: 2000,
-            delay: timing
+    const keyframes = [
+        { 
+            opacity: 0,
+            transform: "translateY(-50px)"
+        },
+        { 
+            opacity: 1,
+            transform: "translateY(0px)"
         }
-    );
-    const animation = new Animation(
-        keyframes,
-        document.timeline,
-    );
-    animation.play();
-    timing += 1000;
-}) */
+    ];
+    const options = {
+        duration: 1500,
+        delay: timing
+    };
+    
+    letterTag.animate(keyframes, options);
+    letterTag.animate(keyframes, options).onfinish = (event) => {
+        letterTag.style.opacity = 1;
+        letterTag.style.transform = 'translateY(0px)'
+    };
+    timing += 500;
+
+})
